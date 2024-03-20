@@ -164,7 +164,7 @@ What happens is the window will wait for the user to input keypresses or close t
 
 # Here are some pointers to take note of when tackling this project:
 1. XPM has to be converted to image first before putting into window
-2. The map has to have a valid path for the Player to navigate to all collectibles and the exit (if 1 collectible is walled off, it should be an error)
+2. The map has to have a valid path for the Player to [navigate](https://www.programiz.com/dsa/graph-dfs) to all collectibles and the exit (if 1 collectible is walled off, it should be an error)
 3. This project has a heavy focus on memory manipulation at all stages. Segmentation fault will be very common.
 4. Linking structs without proper planning will often cause memory leaks. Plan your structs ahead of time, especially if they involve arrays!
 5. Approximately 70% of the time will be spent on just handling data from reading the map. Do not be discouraged if you spend most of your time just fixing map reading, it is expected!
