@@ -33,18 +33,18 @@ int	object_tracker(t_map *c)
 
 int	walls_and_components(t_map *c)
 {
-	if (c->line[c->len] == '\n')
-		c->line[c->len] = '\0';
-	if (c->len != ft_strlen(c->line))
+	if (c->prev_line[c->len] == '\n')
+		c->prev_line[c->len] = '\0';
+	if (c->len != (ft_strlen(c->prev_line)))
 		return (-1);
-	if (c->line[c->current_col] != '1' || c->line[c->len - 1] != '1')
+	if (c->prev_line[c->current_col] != '1' || c->prev_line[c->len - 1] != '1')
 	{
 		c->fd = -1;
 		return (-1);
 	}
 	while (c->current_col < c->len)
 	{
-		c->check = c->line[c->current_col];
+		c->check = c->prev_line[c->current_col];
 		if (object_tracker(c) == -1)
 			return (-1);
 		c->current_col++;
@@ -58,13 +58,16 @@ int	valid_map_format(t_map *c)
 		return (-1);
 	if (c->current_line == 0)
 	{
-		boundary_check(c);
+		if (boundary_check(c) != 0)
+		{
+			c->fd = -1;
+			return (-1);
+		}
 	}
 	else
 	{
 		if (walls_and_components(c) != 0)
 		{
-			c->fd = -1;
 			return (-1);
 		}
 	}
@@ -78,17 +81,14 @@ int	valid_map_format(t_map *c)
 
 void	read_ber(t_map *c)
 {
-	c->line = "";
 	while (c->line)
 	{
-		c->line = get_next_line(c->fd);
+		c->line = get_next_line(c->fdmap);
 		if (c->line != NULL)
 		{
 			if (valid_map_format(c) != 0)
 			{
 				invalid_format(c);
-				free(c->line);
-				return ;
 			}
 			free(c->line);
 		}
@@ -102,7 +102,8 @@ void	read_ber(t_map *c)
 		}
 		c->current_col++;
 	}
-	if (c->e_count != 1 || c->p_count != 1 || c->c_count < 1)
+	if (c->e_count != 1 || c->p_count != 1 || c->c_count < 1
+		|| c->prev_line[c->current_col] != '\0')
 		invalid_format(c);
 }
 
@@ -110,10 +111,11 @@ int	open_ber(t_map *c, char *map_name, int ac, char **av)
 {
 	if (ac != 2 || ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".ber", 4) != 0)
 	{
-		printf("Invalid arguments.\n");
+		ft_printf("Invalid arguments.\n");
 		return (1);
 	}
 	c->fd = open(map_name, O_RDONLY);
+	c->fdmap = c->fd;
 	if (c->fd == -1)
 	{
 		perror("Error opening file.\n");

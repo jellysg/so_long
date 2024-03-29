@@ -54,6 +54,8 @@ typedef struct s_map
 	int		current_line;
 	int		current_col;
 	int		len;
+    int		fdmap;
+    int		error_flag;
 	int		fd;
 	int		width;
 	int		height;

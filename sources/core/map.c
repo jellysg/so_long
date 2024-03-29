@@ -72,11 +72,14 @@ void	map_window(t_data *data, t_map *c, t_texture *t)
 void	create_map(t_data *data, int argc, char **argv)
 {
 	init_vars(data);
-	if (open_ber(data->map, argv[1], argc, argv) != -1
+	if (open_ber(data->map, argv[1], argc, argv) != 0
 		&& validate_path(data->map, data->player, data->map->fd) == true)
 	{
-		map_window(data, data->map, data->texture);
-		game_loop(data);
+		if (data->map->error_flag == 0)
+		{
+			map_window(data, data->map, data->texture);
+			game_loop(data);
+		}
 	}
-	close(data->map->fd);
+	close(data->map->fdmap);
 }

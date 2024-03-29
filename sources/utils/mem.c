@@ -55,54 +55,54 @@ void	mem_monster(t_data *data)
 	}
 }
 
-void    mem_map_buffer(t_map *c)
+void	mem_map_buffer(t_map *c)
 {
-    int	i;
+	int	i;
 
-    i = 0;
+	i = 0;
 	while (i < c->current_line)
 	{
 		free(c->map_buffer[i]);
 		i++;
 	}
 	free(c->map_buffer);
-    c->map_buffer = (char **)ft_calloc((c->current_line + 1) , sizeof(char *));
+	c->map_buffer = (char **)ft_calloc((c->current_line + 1) , sizeof(char *));
 	i = 0;
-    while (i < c->current_line)
-    {
+	while (i < c->current_line)
+	{
 		free(c->map_buffer[i]);
 		c->map_buffer[i] = ft_strdup(c->map[i]);
-        i++;
-    }
+		i++;
+	}
 	free(c->map_buffer[c->current_line]);
 	c->map_buffer[c->current_line] = ft_strdup(c->line);
 }
 
-void    mem_alloc(t_map *c)
+void	mem_alloc(t_map *c)
 {
-    int	i;
+	int	i;
 
-    i = 0;
-    if (c->current_line != 0)
-    {
+	i = 0;
+	if (c->current_line != 0)
+	{
 		free(c->map[c->current_line - 1]);
 		c->map[c->current_line - 1] = ft_strdup(c->prev_line);
-    }
-    mem_map_buffer(c);
+	}
+	mem_map_buffer(c);
 	while (i < c->current_line)
 	{
 		free(c->map[i]);
 		i++;
 	}
 	free(c->map);
-    c->map = (char **)ft_calloc((c->current_line + 1) , sizeof(char *));
+	c->map = (char **)ft_calloc((c->current_line + 1) , sizeof(char *));
 	i = 0;
-    while (i < c->current_line)
-    {
+	while (i < c->current_line)
+	{
 		free(c->map[i]);
 		c->map[i] = ft_strdup(c->map_buffer[i]);
-        i++;
-    }
+		i++;
+	}
 	free(c->map[c->current_line]);
 	c->map[c->current_line] = ft_strdup(c->line);
 }

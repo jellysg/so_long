@@ -24,10 +24,13 @@ void	init_map(t_data *init)
 	init->map->current_col = 0;
 	init->map->len = 0;
 	init->map->fd = 0;
+	init->map->fdmap = 0;
 	init->map->row = 0;
 	init->map->col = 0;
 	init->map->start_row = -1;
 	init->map->start_col = -1;
+	init->map->error_flag = 0;
+	init->map->line = "";
 }
 
 void	init_vars(t_data *init)

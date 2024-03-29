@@ -20,7 +20,9 @@ int	boundary_check(t_map *c)
 	while (c->current_col < c->len)
 	{
 		if (c->line[c->current_col] != '1')
+		{
 			return (-1);
+		}
 		c->current_col++;
 	}
 	return (0);
@@ -44,6 +46,8 @@ bool	pathing_map(t_map *c, int row, int col)
 
 void	invalid_format(t_map *c)
 {
+    if (c->error_flag == 1)
+		return ;
 	ft_printf("\033[1;31m");
 	ft_printf("Error: Invalid map format.\n");
 	if (c->fd == -1)
@@ -57,7 +61,8 @@ void	invalid_format(t_map *c)
 	if (c->e_count != 1)
 		ft_printf("Only one Exit(E) is required.\n");
 	ft_printf("\033[0m");
-	c->fd = -1;
+	c->fd = 0;
+	c->error_flag = 1;
 }
 
 bool	is_valid_path(t_map *c, int row, int col)
