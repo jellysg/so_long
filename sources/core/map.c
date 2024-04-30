@@ -22,7 +22,7 @@ void	draw_objects(t_data *data, t_map *c, t_texture *t)
 		render_image(data, t->exit[data->player->win], c);
 	else if (c->map[c->row][c->col] == 'C')
 		render_image(data, t->collect[t->frame], c);
-	else if (c->map[c->row][c->col] == 'P')
+	else if (c->map[c->row][c->col] == 'P' || c->map[c->row][c->col] == 'X')
 	{
 		if (data->player->facing == 'L')
 			render_image(data, t->player_l[t->frame], c);

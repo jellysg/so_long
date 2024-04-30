@@ -36,15 +36,12 @@ void	check_up(t_data *data)
 		{
 			ft_printf("You won!\n");
 			game_destroy(data);
+			return ;
 		}
-		return ;
 	}
-	else
-	{
-		data->player->y--;
-		data->player->moves++;
-		check_unique(data);
-	}
+	data->player->y--;
+	data->player->moves++;
+	check_unique(data);
 	return ;
 }
 
@@ -58,15 +55,12 @@ void	check_down(t_data *data)
 		{
 			ft_printf("You won!\n");
 			game_destroy(data);
+			return ;
 		}
-		return ;
 	}
-	else
-	{
-		data->player->y++;
-		data->player->moves++;
-		check_unique(data);
-	}
+	data->player->y++;
+	data->player->moves++;
+	check_unique(data);
 	return ;
 }
 
@@ -81,15 +75,12 @@ void	check_left(t_data *data)
 		{
 			ft_printf("You won!\n");
 			game_destroy(data);
+			return ;
 		}
-		return ;
 	}
-	else
-	{
-		data->player->x--;
-		data->player->moves++;
-		check_unique(data);
-	}
+	data->player->x--;
+	data->player->moves++;
+	check_unique(data);
 	return ;
 }
 
@@ -104,14 +95,11 @@ void	check_right(t_data *data)
 		{
 			ft_printf("You won!\n");
 			game_destroy(data);
+			return ;
 		}
-		return ;
 	}
-	else
-	{
-		data->player->x++;
-		data->player->moves++;
-		check_unique(data);
-	}
+	data->player->x++;
+	data->player->moves++;
+	check_unique(data);
 	return ;
 }
