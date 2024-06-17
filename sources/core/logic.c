@@ -34,6 +34,8 @@ void	check_up(t_data *data)
 	{
 		if (data->player->win == 1)
 		{
+			data->player->moves++;
+			ft_printf("Move #%i\n", data->player->moves);
 			ft_printf("You won!\n");
 			game_destroy(data);
 			return ;
@@ -41,6 +43,7 @@ void	check_up(t_data *data)
 	}
 	data->player->y--;
 	data->player->moves++;
+	ft_printf("Move #%i\n", data->player->moves);
 	check_unique(data);
 	return ;
 }
@@ -53,6 +56,8 @@ void	check_down(t_data *data)
 	{
 		if (data->player->win == 1)
 		{
+			data->player->moves++;
+			ft_printf("Move #%i\n", data->player->moves);
 			ft_printf("You won!\n");
 			game_destroy(data);
 			return ;
@@ -60,6 +65,7 @@ void	check_down(t_data *data)
 	}
 	data->player->y++;
 	data->player->moves++;
+	ft_printf("Move #%i\n", data->player->moves);
 	check_unique(data);
 	return ;
 }
@@ -73,6 +79,8 @@ void	check_left(t_data *data)
 	{
 		if (data->player->win == 1)
 		{
+			data->player->moves++;
+			ft_printf("Move #%i\n", data->player->moves);
 			ft_printf("You won!\n");
 			game_destroy(data);
 			return ;
@@ -80,6 +88,7 @@ void	check_left(t_data *data)
 	}
 	data->player->x--;
 	data->player->moves++;
+	ft_printf("Move #%i\n", data->player->moves);
 	check_unique(data);
 	return ;
 }
@@ -93,6 +102,8 @@ void	check_right(t_data *data)
 	{
 		if (data->player->win == 1)
 		{
+			data->player->moves++;
+			ft_printf("Move #%i\n", data->player->moves);
 			ft_printf("You won!\n");
 			game_destroy(data);
 			return ;
@@ -100,6 +111,7 @@ void	check_right(t_data *data)
 	}
 	data->player->x++;
 	data->player->moves++;
+	ft_printf("Move #%i\n", data->player->moves);
 	check_unique(data);
 	return ;
 }
