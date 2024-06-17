@@ -46,7 +46,7 @@ bool	pathing_map(t_map *c, int row, int col)
 
 void	invalid_format(t_map *c)
 {
-    if (c->error_flag == 1)
+	if (c->error_flag == 1)
 		return ;
 	ft_printf("\033[1;31m");
 	ft_printf("Error: Invalid map format.\n");
@@ -96,13 +96,16 @@ bool	validate_path(t_map *c, t_player *p, int fd)
 		ft_printf("\n\033[1;31mInvalid Path\033[0m\n\n");
 		return (false);
 	}
-	ft_printf("\n\033[1;32mValid Path\033[0m\n");
-	ft_printf("\033[1;32mOpening map...\033[0m\n\n");
-	ft_printf("\033[1;35mHOW TO PLAY\n");
-	ft_printf("===========================================\n");
-	ft_printf("| - Use WASD or Arrow keys to move!       |\n");
-	ft_printf("| - Exit opens after all coins collected! |\n");
-	ft_printf("| - Avoid monsters!                       |\n");
-	ft_printf("===========================================\n\033[0m");
-	return (true);
+	else
+	{
+		ft_printf("\n\033[1;32mValid Path\033[0m\n");
+		ft_printf("\033[1;32mOpening map...\033[0m\n\n");
+		ft_printf("\033[1;35mHOW TO PLAY\n");
+		ft_printf("===========================================\n");
+		ft_printf("| - Use WASD or Arrow keys to move!       |\n");
+		ft_printf("| - Exit opens after all coins collected! |\n");
+		ft_printf("| - Avoid monsters!                       |\n");
+		ft_printf("===========================================\n\033[0m");
+		return (true);
+	}
 }
