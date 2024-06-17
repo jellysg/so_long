@@ -87,9 +87,7 @@ void	read_ber(t_map *c)
 		if (c->line != NULL)
 		{
 			if (valid_map_format(c) != 0)
-			{
 				invalid_format(c);
-			}
 			free(c->line);
 		}
 	}
@@ -103,7 +101,7 @@ void	read_ber(t_map *c)
 		c->current_col++;
 	}
 	if (c->e_count != 1 || c->p_count != 1 || c->c_count < 1
-		|| c->prev_line[c->current_col] != '\0')
+		|| ((ft_strlen(c->prev_line) - 1) != c->len))
 		invalid_format(c);
 }
 
@@ -112,14 +110,14 @@ int	open_ber(t_map *c, char *map_name, int ac, char **av)
 	if (ac != 2 || ft_strncmp(av[1] + ft_strlen(av[1]) - 4, ".ber", 4) != 0)
 	{
 		ft_printf("Invalid arguments.\n");
-		return (1);
+		return (0);
 	}
 	c->fd = open(map_name, O_RDONLY);
 	c->fdmap = c->fd;
 	if (c->fd == -1)
 	{
 		perror("Error opening file.\n");
-		return (1);
+		return (0);
 	}
 	read_ber(c);
 	return (c->fd);
