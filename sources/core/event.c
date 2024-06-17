@@ -51,12 +51,11 @@ int	refresh(t_data *data)
 		data->player->win = 1;
 	}
 	draw_map(data, data->map, data->texture);
-	data->texture->keyframe = (data->texture->keyframe + 1) % 4;
+	data->texture->keyframe = (data->texture->keyframe + 1) % 15;
 	if (data->texture->keyframe == 0)
 	{
 		data->texture->frame = (data->texture->frame + 1) % 4;
 	}
-	usleep(1000000 / FRAME_RATE);
 	monster_logic(data);
 	return (0);
 }
