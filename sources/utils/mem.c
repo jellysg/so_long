@@ -45,9 +45,9 @@ void	mem_monster(t_data *data)
 	int	i;
 
 	i = 0;
-	data->monster->x = ft_calloc((data->map->m_count) , sizeof(int));
-	data->monster->y = ft_calloc((data->map->m_count) , sizeof(int));
-	data->monster->facing = ft_calloc((data->map->m_count) , sizeof(char));
+	data->monster->x = ft_calloc((data->map->m_count), sizeof(int));
+	data->monster->y = ft_calloc((data->map->m_count), sizeof(int));
+	data->monster->facing = ft_calloc((data->map->m_count), sizeof(char));
 	while (i < data->map->m_count)
 	{
 		data->monster->facing[i] = data->monster->init_facing;
@@ -66,7 +66,7 @@ void	mem_map_buffer(t_map *c)
 		i++;
 	}
 	free(c->map_buffer);
-	c->map_buffer = (char **)ft_calloc((c->current_line + 1) , sizeof(char *));
+	c->map_buffer = (char **)ft_calloc((c->current_line + 1), sizeof(char *));
 	i = 0;
 	while (i < c->current_line)
 	{
@@ -95,7 +95,7 @@ void	mem_alloc(t_map *c)
 		i++;
 	}
 	free(c->map);
-	c->map = (char **)ft_calloc((c->current_line + 1) , sizeof(char *));
+	c->map = (char **)ft_calloc((c->current_line + 1), sizeof(char *));
 	i = 0;
 	while (i < c->current_line)
 	{
