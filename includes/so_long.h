@@ -54,8 +54,8 @@ typedef struct s_map
 	int		current_line;
 	int		current_col;
 	int		len;
-    int		fdmap;
-    int		error_flag;
+	int		fdmap;
+	int		error_flag;
 	int		fd;
 	int		width;
 	int		height;
@@ -161,7 +161,7 @@ void	init_monster_coords(t_map *c, t_monster *m);
 void	free_map(t_map *c);
 void	free_game(t_data *data);
 void	mem_monster(t_data *data);
-void    mem_map_buffer(t_map *c);
+void	mem_map_buffer(t_map *c);
 void	mem_alloc(t_map *c);
 
 // open_ber.c
