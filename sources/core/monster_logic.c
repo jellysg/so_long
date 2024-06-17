@@ -14,14 +14,14 @@
 
 void	monster_left(t_data *data, int num)
 {
-	char	coords;
+	char	co;
 
-	coords = data->map->map[data->monster->y[num]][data->monster->x[num] - 1];
-	if (coords == '1' || coords == 'E' || coords == 'C' || coords == 'M')
+	co = data->map->map[data->monster->y[num]][data->monster->x[num] - 1];
+	if (co == '1' || co == 'E' || co == 'C' || co == 'M' || co == 'X')
 	{
 		data->monster->facing[num] = 'R';
 	}
-	else if (coords == 'P')
+	else if (co == 'P')
 	{
 		ft_printf("You lost!\n");
 		game_destroy(data);
@@ -36,14 +36,14 @@ void	monster_left(t_data *data, int num)
 
 void	monster_right(t_data *data, int num)
 {
-	char	coords;
+	char	co;
 
-	coords = data->map->map[data->monster->y[num]][data->monster->x[num] + 1];
-	if (coords == '1' || coords == 'E' || coords == 'C' || coords == 'M')
+	co = data->map->map[data->monster->y[num]][data->monster->x[num] + 1];
+	if (co == '1' || co == 'E' || co == 'C' || co == 'M' || co == 'X')
 	{
 		data->monster->facing[num] = 'L';
 	}
-	else if (coords == 'P')
+	else if (co == 'P')
 	{
 		ft_printf("You lost!\n");
 		game_destroy(data);
@@ -61,10 +61,10 @@ void	monster_move(t_data *data)
 	int	num;
 
 	num = 0;
-	data->monster->idle_time = (data->monster->idle_time + 1) % 30;
+	data->monster->idle_time = (data->monster->idle_time + 1) % 60;
 	while (num < data->map->m_count)
 	{
-		if (data->monster->idle_time == 1)
+		if (data->monster->idle_time == 0)
 		{
 			if (data->monster->facing[num] == 'L')
 			{
