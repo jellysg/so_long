@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jergoh <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/08 22:00:22 by jergoh            #+#    #+#             */
+/*   Updated: 2024/06/08 22:00:23 by jergoh           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/libft.h"
 
 static size_t	checkformat(const char *c, size_t *i, va_list *argptr)
@@ -8,7 +20,7 @@ static size_t	checkformat(const char *c, size_t *i, va_list *argptr)
 	format = *(c + 1);
 	if (format == 'c')
 		return (ft_putchar((char) va_arg(*argptr, int)));
-	else if (format == 's')	
+	else if (format == 's')
 		return (ft_putstr(va_arg(*argptr, const char *)));
 	else if (format == 'p')
 		return (ft_putaddress(va_arg(*argptr, void *)));
